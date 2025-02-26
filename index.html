@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalender Masehi & Hijriyah</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar navbar-dark">
+        <a class="navbar-brand" href="#">Kalender Masehi & Hijriyah</a>
+    </nav>
+    <div class="container mt-4">
+        <div class="card">
+            <div class="card-header">
+                <div class="d-flex justify-content-between align-items-center">
+                    <button id="prevMonth" class="btn btn-light"><i class="fas fa-arrow-left"></i></button>
+                    <h5 id="monthYear" class="mb-0"></h5>
+                    <button id="nextMonth" class="btn btn-light"><i class="fas fa-arrow-right"></i></button>
+                </div>
+                <div class="mt-2">
+                    <div class="select-container">
+                        <select id="monthSelect" class="form-control"></select>
+                    </div>
+                    <div class="select-container">
+                        <select id="yearSelect" class="form-control"></select>
+                    </div>
+                    <button id="eventListBtn" class="btn btn-light event-list-btn" title="Lihat Daftar Acara"><i class="fas fa-list"></i></button>
+                </div>
+            </div>
+            <div class="card-body">
+                <table class="calendar-table">
+                    <thead>
+                        <tr>
+                            <th>Minggu</th><th>Senin</th><th>Selasa</th><th>Rabu</th>
+                            <th>Kamis</th><th>Jumat</th><th>Sabtu</th>
+                        </tr>
+                    </thead>
+                    <tbody id="calendarBody"></tbody>
+                </table>
+                <div class="mt-3">
+                    <p id="hijriDate"></p>
+                    <p id="countdown"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal untuk Menandai Tanggal -->
+    <div class="modal fade" id="markDateModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Tandai Tanggal</h5>
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                </div>
+                <div class="modal-body">
+                    <p>Tanggal: <span id="selectedDate"></span></p>
+                    <input type="text" id="eventName" class="form-control mb-2" placeholder="Nama Acara">
+                    <input type="time" id="eventTime" class="form-control" placeholder="Waktu (HH:MM)">
+                </div>
+                <div class="modal-footer">
+                    <button id="saveEvent" class="btn btn-success">Simpan</button>
+                    <button id="deleteEvent" class="btn btn-danger">Hapus</button>
+                    <button class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal untuk Daftar Acara -->
+    <div class="modal fade" id="eventListModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Daftar Acara</h5>
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Tanggal</th>
+                                <th>Nama Acara</th>
+                                <th>Waktu</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="eventListBody"></tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Countdown -->
+    <div class="modal fade" id="countdownModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Pengingat</h5>
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                </div>
+                <div class="modal-body">
+                    <p id="countdownMessage"></p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="script.js"></script>
+</body>
+</html>

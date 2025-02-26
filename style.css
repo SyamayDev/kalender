@@ -1,0 +1,265 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(45deg, #f0f4f8, #e0e7ff);
+    color: #212529;
+    font-family: 'Roboto', sans-serif;
+    transition: background 0.5s ease, color 0.3s ease;
+    animation: gradientBG 15s ease infinite;
+}
+@keyframes gradientBG {
+    0% { background: linear-gradient(45deg, #f0f4f8, #e0e7ff); }
+    25% { background: linear-gradient(45deg, #e0e7ff, #d1e3ff); }
+    50% { background: linear-gradient(45deg, #d1e3ff, #e0e7ff); }
+    75% { background: linear-gradient(45deg, #e0e7ff, #f0f4f8); }
+    100% { background: linear-gradient(45deg, #f0f4f8, #e0e7ff); }
+}
+
+.navbar {
+    background: linear-gradient(45deg, #28a745, #1e7e34);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    animation: slideIn 1s ease;
+}
+@keyframes slideIn {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
+}
+.navbar-brand {
+    font-size: 2rem;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    transition: transform 0.3s ease;
+}
+.navbar-brand:hover {
+    transform: scale(1.1);
+}
+.card {
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    animation: fadeIn 1s ease;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+.card-header {
+    border-radius: 15px 15px 0 0;
+    background: linear-gradient(45deg, #28a745, #34c759);
+    color: #fff;
+}
+.calendar-table {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    animation: zoomIn 0.5s ease;
+}
+@keyframes zoomIn {
+    from { transform: scale(0.95); }
+    to { transform: scale(1); }
+}
+.calendar-table th {
+    background: #f8f9fa;
+    padding: 15px;
+    font-weight: 500;
+    color: #28a745;
+    border-bottom: 2px solid #28a745;
+    transition: background 0.3s ease;
+}
+.calendar-table th:hover {
+    background: #e9ecef;
+}
+.calendar-table td {
+    padding: 15px;
+    border: 1px solid #e9ecef;
+    position: relative;
+    transition: all 0.3s ease;
+}
+.calendar-table td:hover {
+    background: #e9ecef;
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+.hijri-date {
+    font-size: 0.7rem;
+    color: #666;
+    display: block;
+    margin-top: 5px;
+    transition: color 0.3s ease;
+}
+.calendar-table td:hover .hijri-date {
+    color: #28a745;
+}
+.marked-date {
+    background: #28a745;
+    color: #fff;
+}
+.marked-date .hijri-date {
+    color: #fff;
+}
+.today {
+    background: #34c759;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(52, 199, 89, 0.7);
+    animation: bounce 1s infinite;
+}
+.today .hijri-date {
+    color: #fff;
+}
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+.modal-content {
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.95);
+    animation: slideUp 0.5s ease;
+}
+@keyframes slideUp {
+    from { transform: translateY(20px); }
+    to { transform: translateY(0); }
+}
+.modal-header {
+    background: linear-gradient(45deg, #28a745, #34c759);
+    color: #fff;
+}
+.select-container {
+    display: inline-block;
+    width: 150px;
+    margin-right: 10px;
+}
+.btn-light {
+    transition: transform 0.3s ease;
+}
+.btn-light:hover {
+    transform: rotate(360deg);
+}
+.event-list-btn {
+    margin-left: 10px;
+    padding: 5px 10px;
+    font-size: 1.2rem;
+}
+
+/* Responsive Design untuk HP */
+@media (max-width: 767px) {
+    .navbar-brand {
+        font-size: 1.5rem;
+    }
+    .card-header {
+        padding: 10px;
+    }
+    .select-container {
+        width: 48%;
+        margin-right: 4%;
+    }
+    .select-container:nth-child(2n) {
+        margin-right: 0;
+    }
+    .calendar-table th, .calendar-table td {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+    .hijri-date {
+        font-size: 0.6rem;
+    }
+    .calendar-table td:hover {
+        transform: none;
+        box-shadow: none;
+    }
+    .container {
+        padding: 10px;
+    }
+    .btn-light {
+        padding: 5px 10px;
+    }
+    .event-list-btn {
+        font-size: 1rem;
+        padding: 5px 8px;
+    }
+    .modal-dialog {
+        margin: 10px;
+    }
+    .modal-body input {
+        font-size: 0.9rem;
+    }
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: linear-gradient(45deg, #121212, #1e1e1e) !important;
+        color: #e9ecef !important;
+        animation: darkGradientBG 15s ease infinite;
+    }
+    @keyframes darkGradientBG {
+        0% { background: linear-gradient(45deg, #121212, #1e1e1e); }
+        25% { background: linear-gradient(45deg, #1e1e1e, #2d2d2d); }
+        50% { background: linear-gradient(45deg, #2d2d2d, #1e1e1e); }
+        75% { background: linear-gradient(45deg, #1e1e1e, #121212); }
+        100% { background: linear-gradient(45deg, #121212, #1e1e1e); }
+    }
+    .navbar {
+        background: linear-gradient(45deg, #1c7c54, #145f3f) !important;
+    }
+    .card, .modal-content {
+        background: rgba(30, 30, 30, 0.977) !important;
+        color: #e9ecef !important;
+    }
+    .card-header, .modal-header {
+        background: linear-gradient(45deg, #1c7c54, #34c759) !important;
+    }
+    .calendar-table {
+        background: #2d2d2d;
+    }
+    .calendar-table th {
+        background: #1e1e1e;
+        color: #80ffa7;
+        border-bottom: 2px solid #1c7c54;
+    }
+    .calendar-table th:hover {
+        background: #3d3d3d;
+    }
+    .calendar-table td {
+        border: 1px solid #666;
+    }
+    .calendar-table td:hover {
+        background: #3d3d3d;
+    }
+    .marked-date {
+        background: #1c7c54;
+    }
+    .today {
+        background: #34c759;
+        box-shadow: 0 0 10px rgba(52, 199, 89, 0.7);
+    }
+    .hijri-date {
+        color: #b0b0b0;
+    }
+    .calendar-table td:hover .hijri-date {
+        color: #80ffa7;
+    }
+    /* Styling tabel di modal daftar acara untuk dark mode */
+    .table {
+        background: #2d2d2d;
+        color: #e9ecef;
+    }
+    .table-striped tbody tr:nth-of-type(odd) {
+        background-color: #3d3d3d;
+    }
+    .table-striped tbody tr:nth-of-type(even) {
+        background-color: #2d2d2d;
+    }
+    .table th, .table td {
+        border-color: #666;
+        color: #e9ecef;
+    }
+    .table thead th {
+        background: #1e1e1e;
+        color: #80ffa7;
+        border-bottom: 2px solid #1c7c54;
+    }
+}
