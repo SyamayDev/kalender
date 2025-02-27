@@ -1,3 +1,4 @@
+/* [Previous CSS remains unchanged] */
 body {
     margin: 0;
     padding: 0;
@@ -17,7 +18,7 @@ body {
 
 .navbar {
     background: linear-gradient(45deg, #28a745, #1e7e34);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     animation: slideIn 1s ease;
 }
 @keyframes slideIn {
@@ -25,18 +26,18 @@ body {
     to { transform: translateY(0); }
 }
 .navbar-brand {
-    font-size: 2rem;
+    font-size: 1.8rem;
     color: #fff;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
     transition: transform 0.3s ease;
 }
 .navbar-brand:hover {
     transform: scale(1.1);
 }
 .card {
-    border-radius: 15px;
+    border-radius: 10px;
     background: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
     animation: fadeIn 1s ease;
 }
 @keyframes fadeIn {
@@ -44,26 +45,36 @@ body {
     to { opacity: 1; }
 }
 .card-header {
-    border-radius: 15px 15px 0 0;
+    border-radius: 10px 10px 0 0;
     background: linear-gradient(45deg, #28a745, #34c759);
     color: #fff;
+    padding: 10px;
 }
 .calendar-table {
     width: 100%;
+    max-width: 100%;
     text-align: center;
     border-collapse: collapse;
     background: #fff;
-    border-radius: 10px;
+    border-radius: 6px;
     overflow: hidden;
     animation: zoomIn 0.5s ease;
+    margin: 0 auto;
+    table-layout: fixed;
 }
 @keyframes zoomIn {
     from { transform: scale(0.95); }
     to { transform: scale(1); }
 }
+.calendar-table th, .calendar-table td {
+    padding: 8px;
+    border: 1px solid #e9ecef;
+    font-size: 0.8rem;
+    width: 14.28%;
+    vertical-align: middle;
+}
 .calendar-table th {
     background: #f8f9fa;
-    padding: 15px;
     font-weight: 500;
     color: #28a745;
     border-bottom: 2px solid #28a745;
@@ -72,23 +83,17 @@ body {
 .calendar-table th:hover {
     background: #e9ecef;
 }
-.calendar-table td {
-    padding: 15px;
-    border: 1px solid #e9ecef;
-    position: relative;
-    transition: all 0.3s ease;
-}
 .calendar-table td:hover {
     background: #e9ecef;
-    transform: scale(1.05);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transform: scale(1.02);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     cursor: pointer;
 }
 .hijri-date {
     font-size: 0.7rem;
     color: #666;
     display: block;
-    margin-top: 5px;
+    margin-top: 4px;
     transition: color 0.3s ease;
 }
 .calendar-table td:hover .hijri-date {
@@ -104,7 +109,7 @@ body {
 .today {
     background: #34c759;
     color: #fff;
-    box-shadow: 0 0 10px rgba(52, 199, 89, 0.7);
+    box-shadow: 0 0 6px rgba(52, 199, 89, 0.7);
     animation: bounce 1s infinite;
 }
 .today .hijri-date {
@@ -112,83 +117,170 @@ body {
 }
 @keyframes bounce {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
+    50% { transform: translateY(-2px); }
 }
 .modal-content {
-    border-radius: 15px;
+    border-radius: 10px;
     background: rgba(255, 255, 255, 0.95);
     animation: slideUp 0.5s ease;
 }
 @keyframes slideUp {
-    from { transform: translateY(20px); }
+    from { transform: translateY(15px); }
     to { transform: translateY(0); }
 }
 .modal-header {
     background: linear-gradient(45deg, #28a745, #34c759);
     color: #fff;
 }
+.select-container-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    margin-top: 5px;
+}
 .select-container {
     display: inline-block;
-    width: 150px;
-    margin-right: 10px;
+    width: 120px;
+    margin: 0 5px;
 }
 .btn-light {
     transition: transform 0.3s ease;
+    padding: 6px 10px;
+    font-size: 1rem;
 }
 .btn-light:hover {
     transform: rotate(360deg);
 }
-.event-list-btn {
+.event-list-btn, #refreshBtn {
+    margin: 0 5px;
+    font-size: 1rem;
+}
+.refresh-btn {
+    position: relative;
     margin-left: 10px;
-    padding: 5px 10px;
-    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+.refresh-btn:hover {
+    transform: rotate(360deg);
 }
 
-/* Responsive Design untuk HP */
-@media (max-width: 767px) {
-    .navbar-brand {
-        font-size: 1.5rem;
+@media (min-width: 768px) {
+    .card-header .d-flex {
+        justify-content: space-between;
+        align-items: center;
     }
-    .card-header {
-        padding: 10px;
+    .header-content {
+        flex-grow: 1;
+        justify-content: center;
+    }
+    .refresh-btn {
+        position: static;
+        margin-left: 5px;
     }
     .select-container {
-        width: 48%;
-        margin-right: 4%;
+        width: 120px;
+        margin: 0 5px;
     }
-    .select-container:nth-child(2n) {
-        margin-right: 0;
+    .select-container-wrapper {
+        flex-wrap: nowrap;
+        margin-top: 0;
+    }
+    .calendar-table {
+        margin: 0 auto;
     }
     .calendar-table th, .calendar-table td {
-        padding: 8px;
-        font-size: 0.9rem;
+        padding: 10px;
+        font-size: 0.7rem;
     }
     .hijri-date {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+    .card-header {
+        padding: 8px;
+    }
+    .refresh-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 10;
+    }
+    .card-header .d-flex {
+        position: relative;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .header-content {
+        width: 100%;
+        justify-content: center;
+        margin-top: 30px;
+        flex-direction: row;
+        align-items: center;
+    }
+    .event-list-btn {
+        margin-top: 30px;
+    }
+    .select-container-wrapper {
+        display: flex;
+        flex-wrap: nowrap;
+        width: 100%;
+        justify-content: center;
+    }
+    .select-container {
+        width: 45%;
+        margin: 2px 2px;
+    }
+    .card-header .d-flex > * {
+        margin: 2px 0;
+    }
+    .calendar-table {
+        margin: 0 auto;
+        width: 100%;
+        max-width: 100%;
+    }
+    .card-body {
+        padding: 8px;
+        text-align: center;
+    }
+    .calendar-table th, .calendar-table td {
+        padding: 6px;
         font-size: 0.6rem;
+        width: 14.28%;
+    }
+    .hijri-date {
+        font-size: 0.4rem;
+        margin-top: 2px;
     }
     .calendar-table td:hover {
         transform: none;
         box-shadow: none;
     }
     .container {
-        padding: 10px;
+        padding: 5px;
     }
-    .btn-light {
-        padding: 5px 10px;
-    }
-    .event-list-btn {
-        font-size: 1rem;
-        padding: 5px 8px;
+    .btn-light, .event-list-btn, #refreshBtn {
+        padding: 4px 8px;
+        font-size: 0.9rem;
     }
     .modal-dialog {
-        margin: 10px;
+        margin: 5px;
     }
     .modal-body input {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
+    }
+    #monthYear {
+        font-size: 1.1rem;
+    }
+    .navbar {
+        padding: 5px 10px;
     }
 }
 
-/* Dark Mode */
 @media (prefers-color-scheme: dark) {
     body {
         background: linear-gradient(45deg, #121212, #1e1e1e) !important;
@@ -234,7 +326,7 @@ body {
     }
     .today {
         background: #34c759;
-        box-shadow: 0 0 10px rgba(52, 199, 89, 0.7);
+        box-shadow: 0 0 6px rgba(52, 199, 89, 0.7);
     }
     .hijri-date {
         color: #b0b0b0;
@@ -242,7 +334,6 @@ body {
     .calendar-table td:hover .hijri-date {
         color: #80ffa7;
     }
-    /* Styling tabel di modal daftar acara untuk dark mode */
     .table {
         background: #2d2d2d;
         color: #e9ecef;
